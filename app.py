@@ -194,13 +194,13 @@ st.dataframe(format_summary_table(summary_df), use_container_width=True)
 # -----------------------------
 # Comparison chart
 # -----------------------------
-st.subheader("Incremental GMV by Resort and Scenario")
-
-chart_source = summary_df[summary_df["Resort"] != "Selected Resorts Total"][
-    ["Resort", "Low Lift $", "Mid Lift $", "High Lift $"]
-].set_index("Resort")
-
-st.bar_chart(chart_source)
+#st.subheader("Incremental GMV by Resort and Scenario")
+#
+#chart_source = summary_df[summary_df["Resort"] != "Selected Resorts Total"][
+#    ["Resort", "Low Lift $", "Mid Lift $", "High Lift $"]
+#].set_index("Resort")
+#
+#st.bar_chart(chart_source)
 
 # -----------------------------
 # Monthly detail by resort
