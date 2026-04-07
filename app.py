@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import plotly[express]>=5.0.0 as px
+import plotly as px
 
 st.set_page_config(page_title="Trip Builder Impact Model", layout="wide")
 
