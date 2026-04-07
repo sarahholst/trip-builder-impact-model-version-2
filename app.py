@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import plotly as px
 
 st.set_page_config(page_title="Trip Builder Impact Model", layout="wide")
 
@@ -195,23 +194,13 @@ st.dataframe(format_summary_table(summary_df), use_container_width=True)
 # -----------------------------
 # Comparison chart
 # -----------------------------
-chart_source = summary_df[summary_df["Resort"] != "Selected Resorts Total"].melt(
-    id_vars="Resort",
-    value_vars=["Low Lift $", "Mid Lift $", "High Lift $"],
-    var_name="Scenario",
-    value_name="Incremental GMV"
-)
+st.subheader("Incremental GMV by Resort and Scenario")
 
-fig = px.bar(
-    chart_source,
-    x="Resort",
-    y="Incremental GMV",
-    color="Scenario",
-    barmode="group",
-    title="Incremental GMV by Resort and Scenario"
-)
-fig.update_layout(xaxis_title="", yaxis_title="Incremental GMV")
-st.plotly_chart(fig, use_container_width=True)
+chart_source = summary_df[summary_df["Resort"] != "Selected Resorts Total"][
+    ["Resort", "Low Lift $", "Mid Lift $", "High Lift $"]
+].set_index("Resort")
+
+st.bar_chart(chart_source)
 
 # -----------------------------
 # Monthly detail by resort
